@@ -1,0 +1,14 @@
+<h2>Book this <%= @restaurant.name %></h2>
+<%= simple_form_for [@restaurant, @booking] do |f| %>
+  <%= f.input :date %>
+  <%= f.submit %>
+<% end %>
+
+<% if @bookings.exists? %>
+  <h2>Your bookings</h2>
+  <ul>
+    <% @bookings.each do |booking| %>
+      <li><%= link_to booking.date.strftime("%a %b %e"), booking %></li>
+    <% end %>
+  </ul>
+<% end %>
